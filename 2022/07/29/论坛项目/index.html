@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://example.com/Blog/source/imags/image-20220729223155410.png">
 <meta property="og:image" content="http://example.com/imags/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21jY2FuZDEyMzQ=,size_16,color_FFFFFF,t_70.png">
 <meta property="article:published_time" content="2022-07-29T14:17:49.043Z">
-<meta property="article:modified_time" content="2022-08-04T08:06:25.328Z">
+<meta property="article:modified_time" content="2022-08-05T05:09:52.526Z">
 <meta property="article:author" content="TT">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="Java">
@@ -212,7 +212,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-04 16:06:25" itemprop="dateModified" datetime="2022-08-04T16:06:25+08:00">2022-08-04</time>
+                <time title="修改时间：2022-08-05 13:09:52" itemprop="dateModified" datetime="2022-08-05T13:09:52+08:00">2022-08-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -353,7 +353,7 @@
 <p>​	一般应用在消息系统（主流）、日志收集、用户行为跟踪、流式数据处理等方面。</p>
 <p>·kafka术语</p>
 <p>​	-Broker【kafka服务器，kafka集群中的每一台服务器都是一个Broker】、zookeeper</p>
-<p>​	-Topic【主题】、Partition【分区】、Offset【消息在队列中的索引】</p>
+<p>​	-Topic【主题】、Partition【分区】、一个主题有多个分区。Offset 偏移量【消息在分区	队列中的索引】</p>
 <p>​	-Leader Replica【主副本：数据的备份，负责响应】、Follower Replica【从副本，从主副本备份数据】</p>
 <h4 id="Kafaka的特性"><a href="#Kafaka的特性" class="headerlink" title="Kafaka的特性"></a>Kafaka的特性</h4><p>​	高吞吐量：处理TB级的海量数据；</p>
 <p>​	消息持久化：持久化，将数据存储到硬盘上，而不仅仅存储在内存中，长久保存消息，存到硬盘中的读取速度远远小于内存，读写硬盘的效率高低取决于读取硬盘的方式，硬盘的顺序读写的效率是很高的（高于对内存的随机读写），kafka保证对硬盘消息的读取都是顺序的；</p>
@@ -484,9 +484,10 @@
 <p>首先，Follower 发送 FETCH 请求给 Leader。接着，Leader 会读取底层日志文件中的消 息数据，再更新它内存中的 Follower 副本的 LEO 值，更新为 FETCH 请求中的 fetchOffset 值。最后，尝试更新分区高水位值。Follower 接收到 FETCH 响应之后，会把 消息写入到底层日志，接着更新 LEO 和 HW 值。</p>
 <p>Leader 和 Follower 的 HW 值更新时机是不同的，Follower 的 HW 更新永远落后于 Leader 的 HW。这种时间上的错配是造成各种不一致的原因。</p>
 <h2 id="Elasticsearch-分布式搜索引擎"><a href="#Elasticsearch-分布式搜索引擎" class="headerlink" title="Elasticsearch 分布式搜索引擎"></a>Elasticsearch 分布式搜索引擎</h2><h3 id="ES-介绍与作用"><a href="#ES-介绍与作用" class="headerlink" title="ES 介绍与作用"></a>ES 介绍与作用</h3><p>ES是一个基于 lucene 构建的，分布式的，由多个节点构成集群，RESTful的开源全文搜索引擎。</p>
-<p>存储原理：数据按照 Index 索引– Type 类型（6.0之后逐渐废弃） – Document 文档 – 字段 四级存储。6.0 之后的其中 Index 对应表，Document 为搜索的原子单位，包含一个或多个容器，基于 JSON 表示，类似于数据库中的行。字段是指 JSON 中的每一项组成，类似于数据库中的列。 Mapping 是文档分析过滤后的结果，根据用户自定义，将某些文字过滤掉，类似于表结构定义 DDL。同时 ES 也和分布式数据库一样，支持 shard 分片 的 replication 分段。</p>
-<p>-索引【相当于MySQL中的库，从6.0后，索引对应的是一张表】、类型【相当于MySQL中的表】、文档【相当于MySQL中的一行数据】、字段【相当于MySQL中的一列：json数据形式】</p>
-<p>-集群【分布式部署，集群是指多台服务器协助工作，提高整体性能】、节点【集群中的每一台服务器】、分片【一个索引拆分成多个分片，提高并发能力】、副本【分片的备份，提高可用性】</p>
+<p>​	存储原理：数据按照 Index 索引– Type 类型（6.0之后逐渐废弃） – Document 文档 – 字段 四级存储。6.0 之后的其中 Index 对应表，Document 为搜索的原子单位，包含一个或多个容器，基于 JSON 表示，类似于数据库中的行。字段是指 JSON 中的每一项组成，类似于数据库中的列。 Mapping 是文档分 析过滤后的结果，根据用户自定义，将某些文字过滤掉，类似于表结构定义 DDL。同时 ES 也和分布式数据库一样，支持 shard 分片 的 replication 分段。</p>
+<p>​	集群【分布式部署，集群是指多台服务器协助工作，提高整体性能】、节点【集群中的每一台服务器】、分片【一个索引拆分成多个分片，提高并发能力】、副本【分片的备份，提高可用性】</p>
+<p>​	索引：MySQL 的 B+ 树 与 ES 的单排索引 比较</p>
+<p>因为Elasticsearch最核心功能是搜索，所以查询的速度最重要，而插入&#x2F;更新数据的速度是次要的。</p>
 <p>功能：</p>
 <p>1、分布式的搜索引擎和数据分析引擎。</p>
 <p>2、全文检索，结构化检索，数据分析。</p>
@@ -495,9 +496,9 @@
 <p>1、可以作为分布式集群处理PB级别的数据，也可单机使用。</p>
 <p>2、不是特有技术，而是将分布式+全文搜索（lucene) + 数据分析合并在一起。</p>
 <p>3、操作简单，作为传统数据库的补充，提供了数据库所不具备的很多功能。</p>
-<h3 id="ES-在论坛项目中的应用"><a href="#ES-在论坛项目中的应用" class="headerlink" title="ES 在论坛项目中的应用"></a>ES 在论坛项目中的应用</h3><p>​		在进行帖子搜索时，使用到了 ES。可用 Repository 和 Template 两种方式，由于 Repository 搜索到的结果（直接返回的 post 类，方便）没有高亮标签（why），所以使用了 template 方式重写了 mapResults 函数，获得了带有高亮标签的 post。</p>
-<p>​		使用消息队列（kafka）的方式，实现发帖&#x2F;删帖后ES数据库的自动更新。</p>
-<p>搜索：定义 SearchQuery，确定搜素内容，排序方式，高亮等。接着使用 elasticTemplate.queryForPage 方法，需要重写mapResults 函数，得到高亮数据。</p>
+<h3 id="ES-在论坛项目中的应用"><a href="#ES-在论坛项目中的应用" class="headerlink" title="ES 在论坛项目中的应用"></a>ES 在论坛项目中的应用</h3><p>​		ES 服务器数据同步：发布帖子或增加评论时，采用异步的方式（提高性能）提交到 ES 服务器，当发帖评论触发事件时，生产者直接将事件丢到消息队列，就可以去处理另外的事；在消费组件中增加方法（标注 @KafkaListener(topics &#x3D; {发帖&#x2F;评论})），就可以消费帖子发布和评论发布事件。即使用消息队列（kafka）的方式，实现发帖&#x2F;删帖后 ES 数据库的自动更新。</p>
+<p>​		在进行帖子搜索时，使用到了 ES。可用 Repository 和 Template 两种方式，由于 Repository 搜索到的结果（直接返回的 post 类，方便）没有高亮标签（why），所以使用了 template 方式重写了 mapResults 函数，获得了带有高亮标签的 post。</p>
+<p>​	搜索：定义 SearchQuery，确定搜素内容，排序方式，高亮等。接着使用 elasticTemplate.queryForPage 方法，需要重写mapResults 函数，得到高亮数据。</p>
 <h3 id="ES-八股文"><a href="#ES-八股文" class="headerlink" title="ES 八股文"></a>ES 八股文</h3><p>1.为什么要使用Elasticsearch?</p>
 <p>因为在我们商城中的数据，将来会非常多，所以采用以往的模糊查询，模糊查询前置配置，会放弃索引，导致商品查询是全表扫面，在百万级别的数据库中，效率非常低下，而我们使用ES做一个全文索引，我们将经常查询的商品的某些字段，比如说商品名，描述、价格还有id这些字段我们放入我们索引库里，可以提高查询速度。</p>
 <p>2.Elasticsearch是如何实现Master选举的？</p>

@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://example.com/Blog/source/imags/image-20220729223155410.png">
 <meta property="og:image" content="http://example.com/imags/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21jY2FuZDEyMzQ=,size_16,color_FFFFFF,t_70.png">
 <meta property="article:published_time" content="2022-07-29T14:17:49.043Z">
-<meta property="article:modified_time" content="2022-08-05T05:09:52.526Z">
+<meta property="article:modified_time" content="2022-08-06T05:15:17.643Z">
 <meta property="article:author" content="TT">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="Java">
@@ -212,7 +212,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-05 13:09:52" itemprop="dateModified" datetime="2022-08-05T13:09:52+08:00">2022-08-05</time>
+                <time title="修改时间：2022-08-06 13:15:17" itemprop="dateModified" datetime="2022-08-06T13:15:17+08:00">2022-08-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,14 +237,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>21k</span>
+              <span>23k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>19 分钟</span>
+              <span>20 分钟</span>
             </span>
 
         </div>
@@ -278,9 +278,9 @@
 <p>​	验证码：方案一：存在 session 中，但是分布式部署存在 Session 共享问题。方案二：存放在 Redis （采用 String 数据类型来存放验证码英文数字），解决分布式部署的问题，而且能设置有效时间超时就失效，验证码是频繁访问和刷新的对性能要求高，所以使用 Redis。</p>
 <p>​	登陆凭证：方案一：在每次处理请求的时候拦截器都会查询用户的登录凭证，访问比较频繁，性能较低。方案二：存放在 Redis ，采用String数据格式。</p>
 <p>​	缓存用户信息：后台在每次处理请求的时候都要根据用户的凭证获取用户信息，访问的频率非常高。</p>
-<p>​	帖子分数：</p>
-<p>​	UV：HyperLogLog，12k的内存能存储接近<code>2^64</code>个不同元素，适合数量量巨大（百万、千万级别以上）的计数场景</p>
-<p>​	单日活跃用户：Bitmap，适合需要保存状态信息（0&#x2F;1 即可表示）的场景，用户签到情况、活跃用户情况、用户行为统计（比如是否点赞过某个视频）。</p>
+<p>​	帖子分数：计算公式计算帖子分数，把帖子 id 和分数都存入 redis 的 ZSet 。</p>
+<p>​	UV 独立访客（Unique Visitor）：HyperLogLog， 常用大数据量的去重统计（小数据量去重可采用Set 集合），占 12k 的内存就能存储接近<code>2^64</code>个不同元素，是不精准统计算法（估算）。</p>
+<p>​	DAU 单日活跃用户（Daily Active User）：Bitmap 0&#x2F;1构成的 byte 数组，适合需要保存状态信息（0&#x2F;1 即可表示）的场景，如用户签到情况、活跃用户情况、用户行为统计（比如是否点赞过某个视频）。</p>
 <p>​	区间活跃用户：Bitmap 同上。</p>
 <h3 id="Redis-八股文"><a href="#Redis-八股文" class="headerlink" title="Redis 八股文"></a>Redis 八股文</h3><p>1、Redis 是单线程的，如何提高多核 CPU 的利用率？ </p>
 <p>​		在同一个服务器部署多个Redis实例，并将它们当作不同的服务器使用。使用多个cpu，可以使用 shard 分片。</p>
@@ -361,9 +361,17 @@
 <p>​	高拓展性：集群的服务器不够时，可以扩展服务器，只需简单的配置。</p>
 <h4 id="Kafka-与消息队列的实现方式"><a href="#Kafka-与消息队列的实现方式" class="headerlink" title="Kafka 与消息队列的实现方式"></a>Kafka 与消息队列的实现方式</h4><p>​		点对点的实现方式：BlockingQueue 阻塞队列，生产者将生产的消息放入队列中，消费者从队列中取出数据，每个消息只会被一个消费者消费；</p>
 <p>​		发布订阅模式：生产者 Producer 将消息发布到某个主题中 Topic，多个消费者 Consumer 可以同时订阅这个位置，该消息可以被多个消费者读取。假如订阅者只有一个，那么和点对点的实现方式是一样的。</p>
-<h3 id="Kafka-在论坛项目中的应用"><a href="#Kafka-在论坛项目中的应用" class="headerlink" title="Kafka 在论坛项目中的应用"></a>Kafka 在论坛项目中的应用</h3><p>​		本项目主要用到的是 Kafka 中的消息系统（基于消息队列）功能，即发送系统消息&#x2F;通知。</p>
-<p>​		当有点赞，评论，关注请求时，会发送系统通知给被点赞，评论，关注的对象。在处理系统信息时，使用到了Kafka，具体来说，先定义了生产者类和消费者类，其中生产者被点赞&#x2F;评论&#x2F;关注功能对应的Controller使用，产生消息。而消费者负责消息（message）到来时，把消息存到数据库内。 </p>
-<p>​		开发流程：触发事件–&gt;开发事件对象–&gt;开发事件生产者–&gt;开发事件消费者</p>
+<h3 id="Kafka-在论坛项目中的应用"><a href="#Kafka-在论坛项目中的应用" class="headerlink" title="Kafka 在论坛项目中的应用"></a>Kafka 在论坛项目中的应用</h3><p>本项目主要用到的是 Kafka 中的消息系统（基于消息队列）功能，即发送系统消息&#x2F;通知。</p>
+<p>1、为数据库服务：</p>
+<p>评论、点赞、关注时触发 Event，生产者发送消息到主题，消费者自动读取消息，封装成message，发送方id置为1，认为是系统发送的消息，存到数据库，这样就可以配合前端在用户被点赞关注时，得到通知。系统通知的消息非常多，使用消息队列进行削峰，避免直达数据库。</p>
+<p>2、为ES服务</p>
+<p>（1）在新建帖子，置顶，加精，评论帖子时，除了更新数据库的帖子的内容之外，也要将“发帖”为主题，发送到队列中，消费者得到帖子之后，让ES去做帖子的插入，覆盖ES中原有的帖子，防止ES中查到的数据不一致，同时也能减去ES对数据库的访问；</p>
+<p>(2)删除帖子时，以“删帖”为主题，发送消息，消费者读取postId，让ES删掉帖子；</p>
+<p>​		</p>
+<p>​		当有点赞，评论，关注请求时，会发送系统通知给被点赞，评论，关注的对象。在处理系统信息时，使用到了Kafka，具体来说，先定义了生产者类和消费者类，其中生产者被点赞&#x2F;评论&#x2F;关注功能对应的 Controller 使用，产生消息。而消费者负责消息（message）到来时，把消息存到数据库内。 </p>
+<p>生产者：触发Event，封装了Topic以及userId、Entity等信息，调用sendMsg时，提取出event.Topic和JSONObject.toJSONString(Event)以content形式发送，进行调用即可；</p>
+<p>消费者：监听Topic，如果有新消息，就读取，record中获得到的是event里的json串，再恢复成event即可JSONObject.paresObject(record.value().toString,Event.class)；</p>
+<p>然后将相关属性，封装成message私信的形式，保存到数据库中，供给前端页面调用并显示。</p>
 <h3 id="Kafka-八股文"><a href="#Kafka-八股文" class="headerlink" title="Kafka 八股文"></a>Kafka 八股文</h3><h4 id="基础题目"><a href="#基础题目" class="headerlink" title="基础题目"></a>基础题目</h4><p>2、什么是消费者组?</p>
 <p>消费者组是 Kafka 独有的概念，如果面试官问这个，就说明他对此是有一定了解的。我先给出标准答案：</p>
 <p>1、定义：即消费者组是 Kafka 提供的可扩展且具有容错性的消费者机制。</p>
@@ -554,8 +562,14 @@
 <p>​		AOP(Aspect-Oriented Programming:面向切面编程)：因为诸如日志，权限，事务，性能监测等业务几乎涉及到了所有的核心模块，如果把这些特殊的业务代码直接到核心业务模块的代码中就会造成代码混乱、代码冗余、耦合度高等问题。AOP 能够将那些与业务无关，却为业务模块所共同调用的逻辑代码（例如事务处理、日志管理、权限控制等）封装起来。便于减少系统的重复代码，降低模块间的耦合度，并有利于未来的可拓展性和可维护性。</p>
 <p>​		服务器分为表现层、业务层、数据层。而Spring MVC是表现层的框架，主要作用是接受并解析客户端发来的请求，</p>
 <p>5、项目中怎样用Redis做高并发</p>
-<p>6、如果Redis启动协程更新数据到数据库失败了怎么处理 </p>
+<p>6、如果 Redis 启动协程更新数据到数据库失败了怎么处理 </p>
 <p>7、登录怎么做的？</p>
+<p>​	根据请求来拆解功能</p>
+<p>​		1，打开注册网页</p>
+<p>​		2，把注册的信息发送给服务器（点注册）</p>
+<p>​		3，把激活邮件发送给邮箱</p>
+<p>​		4，利用激活链接打开网页</p>
+<p>​	每一次请求都是先开发数据访问层，在开发业务层，最后开发视图层（三层架构），但是每一次请求不一定要用到这三层</p>
 <p>8、Spring MVC是什么，是怎样的工作流程？</p>
 <p>​		Spring MVC是工作在表现层，根据用户的请求调用service服务，serivece调用dao连接数据库。</p>
 <p>​		在整个 Spring MVC 框架中，DispatcherServlet 处于核心位置，它负责协调和组织不同组件完成请求处理并返回响应工作。</p>
@@ -563,22 +577,34 @@
 <p>10、使用什么技术生成验证码?</p>
 <p>​		使用Kaptcha包，可随机生成字符和图片。</p>
 <p>11、如何实现敏感词过滤？</p>
-<p>​		使用前缀树（字典树）存储敏感词，对text中的敏感词实现替换。</p>
+<p>​		1、使用前缀树（字典树）存储敏感词；2、跳过特殊字符：使用CharUtils工具类中判断是否为特殊字符；3、对 text 中的敏感词实现替换。</p>
+<p>​		前缀树实现：根节点为空，叶子节点存放字符。声明三个指针，分别指向前缀树的根节点以及待处理的字符串。</p>
 <p>12、项目中Redis的作用？用什么数据结构存的？</p>
 <p>​		1.存储验证码；2.存储登录凭证；3.缓存用户信息；4.对zset需要排序的数据进行自定义排序</p>
-<p>​		</p>
 <p>13、怎样存储的点赞&#x2F;关注&#x2F;缓存用户数据？</p>
+<p>​		点赞使用set类型存储，key为点赞对象，set中保存点赞人的ID</p>
+<p>​		关注使用zSet类型存储，key为被关注者，set保存关注者以及关注时间为score</p>
+<p>​		缓存用户数据使用Value类型，key为用userID得到的key，value为user对象（设置过期时间，且数据修改时需要清除缓存）</p>
 <p>14、什么是消息队列？</p>
 <p>​		是一个存放消息的容器，生产者把消息放在队列中，消费者从消息队列中取出数据。好处是解耦，异步，限流。</p>
 <p>15、什么是Kafka，有哪些功能和应用场景？</p>
 <p>​		Kafka是一种消息队列，主要用来处理大量数据状态下的消息队列，一般用来做日志的处理。项目：当有点赞，评论关注请求时，会发送系统通知点赞，评论，关注的对象。</p>
 <p>​		处理系统信息时，使用到了Kafka。即生产者被点赞，评论，关注功能对应的controller使用，产生消息；而消费者负责消息到来时，存到数据库。</p>
 <p>16、怎样统计网站UA和DAU？</p>
-<p>​		HyperLogLog、BitMap</p>
-<p>17、Elasticsearch与数据库的数据怎么同步</p>
+<p>​		使用Redis的高级数据结构：</p>
+<p>​		HyperLogLog：超级日志，统计独立整数个数。统计UA（独立访问）时，以日期为 rediskey ，将客户端IP　add 到HyperLogLog中（redisTemplate.opsForHyperLogLog().add(redisKey, i);）</p>
+<p>​		Bitmap：位图，比如365天的签到，只需要３６５／８个字节的大小。统计DAU（日活跃用户）时，以日期为 rediskey ，以用户ID作为位（在数据中的位置），用 or 操作，既可以方便的统计一段时间内的注册用户访问人数。</p>
+<p>17、Elasticsearch 与数据库的数据怎么同步</p>
+<p>​		当发帖评论触发事件时，生产者直接将事件丢到消息队列，就可以去处理另外的事；在消费组件中增加方法（标注 @KafkaListener(topics &#x3D; {发帖&#x2F;评论})），就可以消费帖子发布和评论发布事件。即使用消息队列（kafka）的方式，实现发帖&#x2F;删帖后 ES 数据库的自动更新。</p>
 <p>18、项目中的优化点，优化的具体场景，展开讲讲</p>
 <p>19、Kafka怎么用的，消息队列的优缺点</p>
 <p>20、Redis的数据结构有哪些，各自的设计思想是什么</p>
+<p>​		String、Set、List、ZSet、HyperLogLog、Bitmap</p>
+<p>21、优化网站的性能</p>
+<p>​	本地缓存：数据缓存在应用服务器上，Caffeine&#x2F;Guava等工具</p>
+<p>​	分布式缓存：数据存在 NoSQL 数据库上，Redis&#x2F;MemCache等工具</p>
+<p>​	多级缓存：请求先查询–&gt;一级缓存–&gt;二级缓存–&gt;DB。数据库查到数据，存到二级缓存一级缓存再返回数据。两级缓存能避免缓存雪崩（只有当两级缓存同时失效，大量直接才会直接请求到 DB，导致 DB 瘫痪，概率很低）。</p>
+<p>22、拦截器的作用？</p>
 
     </div>
 
@@ -766,12 +792,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">83k</span>
+    <span title="站点总字数">85k</span>
     
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:15</span>
+    <span title="站点阅读时长">1:17</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>

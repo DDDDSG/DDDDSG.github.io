@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://example.com/imags/2ae0ed790c7e7403f215acb2bd82e884.png">
 <meta property="og:image" content="http://example.com/imags/86b0046c2622b2c4bda697f9bc0f5b28.png">
 <meta property="article:published_time" content="2022-08-16T15:28:44.503Z">
-<meta property="article:modified_time" content="2022-08-16T15:33:07.556Z">
+<meta property="article:modified_time" content="2022-08-17T18:05:15.482Z">
 <meta property="article:author" content="TT">
 <meta property="article:tag" content="八股文">
 <meta property="article:tag" content="Redis">
@@ -202,10 +202,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-08-16 23:28:44 / 修改时间：23:33:07" itemprop="dateCreated datePublished" datetime="2022-08-16T23:28:44+08:00">2022-08-16</time>
+              <time title="创建时间：2022-08-16 23:28:44" itemprop="dateCreated datePublished" datetime="2022-08-16T23:28:44+08:00">2022-08-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-18 02:05:15" itemprop="dateModified" datetime="2022-08-18T02:05:15+08:00">2022-08-18</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -229,14 +235,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.7k</span>
+              <span>8.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>8 分钟</span>
             </span>
 
         </div>
@@ -271,26 +277,50 @@
 <p>​	Redis 中的 Set 特点：Set 类型是一个无序并唯一的键值集合，它的存储顺序不会按照插入的先后顺序进行存储。Set 类型的底层数据结构是哈希表构成。</p>
 <p>​	Redis 中的 ZSet 特点：ZSet 类型（有序集合类型）相比于 Set 类型多了一个排序属性 score（分值）。ZSet 类型的底层数据结构是由一个跳表，一个哈希表组成；</p>
 <h2 id="持久化篇"><a href="#持久化篇" class="headerlink" title="持久化篇"></a>持久化篇</h2><p>​	持久化机制保证 Redis 挂掉之后再重启，数据可以进行恢复，一种持久化方式叫快照（snapshotting，RDB），另一种方式是只追加文件（append-only file, AOF）</p>
-<h3 id="AOF-日志-持久化怎么实现的？"><a href="#AOF-日志-持久化怎么实现的？" class="headerlink" title="AOF 日志 持久化怎么实现的？"></a>AOF 日志 持久化怎么实现的？</h3><p>​	AOF（主流，存放操作命令）：实时性更好，每执行一条写操作命令，就将该命令以追加的方式写入到 AOF 文件，然后在恢复时，以逐一执行命令的方式来进行数据恢复。</p>
+<h3 id="AOF-日志-持久化怎么实现的？"><a href="#AOF-日志-持久化怎么实现的？" class="headerlink" title="AOF 日志 持久化怎么实现的？"></a>AOF 日志 持久化怎么实现的？</h3><p>​	AOF（主流，存放操作命令）：实时性更好，每执行一条写<strong>操作命令</strong>，就将该命令以追加的方式写入到 AOF 文件，然后在恢复时，以逐一执行命令的方式来进行数据恢复。</p>
 <p>​	写回硬盘策略： Always、Everysec 和 No，这三种策略在可靠性上是从高到低，而在性能上则是从低到高。</p>
 <p>​	重写：为了避免日志文件过大， Redis 提供了 AOF 重写机制，它会直接扫描数据中所有的键值对数据，然后为每一个键值对生成一条写操作命令，接着将该命令写入到新的 AOF 文件，重写完成后，就替换掉现有的 AOF 日志。</p>
-<h3 id="RDB-快照-持久化怎么实现的？"><a href="#RDB-快照-持久化怎么实现的？" class="headerlink" title="RDB 快照 持久化怎么实现的？"></a>RDB 快照 持久化怎么实现的？</h3><p>​	RDB（默认，存放实际数据）：创建 RDB 快照，记录某一个瞬间的内存数据，记录的是实际数据，保存在本地可用来重启恢复，也可复制到其他服务器可创建校内沟通数据的服务器（Redis 主从结构）。</p>
+<h3 id="RDB-快照-持久化怎么实现的？"><a href="#RDB-快照-持久化怎么实现的？" class="headerlink" title="RDB 快照 持久化怎么实现的？"></a>RDB 快照 持久化怎么实现的？</h3><p>​	RDB（默认，存放实际数据）：创建 RDB 快照，记录某一个瞬间的内存数据，记录的是<strong>实际数据</strong>，保存在本地可用来重启恢复，也可复制到其他服务器可创建校内沟通数据的服务器（Redis 主从结构）。</p>
 <p>​	缺点：因为执行快照要把内存所有数据记录到磁盘，比较慢。所有一般通常可能设置至少 5 分钟才保存一次快照，这时如果 Redis 出现宕机等情况，则意味着最多可能丢失 5 分钟数据。这就是 RDB 快照的缺点，在服务器发生故障时，丢失的数据会比 AOF 持久化的方式更多。</p>
-<h3 id="Redis-4-0-的混合持久化"><a href="#Redis-4-0-的混合持久化" class="headerlink" title="Redis 4.0 的混合持久化"></a>Redis 4.0 的混合持久化</h3><p>​	作用在 AOF 重写日志时，</p>
-<h2 id="功能篇"><a href="#功能篇" class="headerlink" title="功能篇"></a>功能篇</h2><h3 id="Redis-过期删除策略"><a href="#Redis-过期删除策略" class="headerlink" title="Redis 过期删除策略"></a>Redis 过期删除策略</h3><p>10、Redis的过期键的删除策略 </p>
+<h3 id="Redis-4-0-的混合持久化"><a href="#Redis-4-0-的混合持久化" class="headerlink" title="Redis 4.0 的混合持久化"></a>Redis 4.0 的混合持久化</h3><p>​	RDB 优点是数据恢复速度快，但是快照的频率不好把握。频率太低，丢失的数据就会比较多，频率太高，就会影响性能。</p>
+<p>​	AOF 优点是丢失数据少，但是数据恢复不快。</p>
+<p>​	集成了 AOF 和 RBD 的优点，作用于 AOF 重写日志时，</p>
+<h2 id="功能篇"><a href="#功能篇" class="headerlink" title="功能篇"></a>功能篇</h2><h3 id="Redis-过期删除策略"><a href="#Redis-过期删除策略" class="headerlink" title="Redis 过期删除策略"></a>Redis 过期删除策略</h3><p>​	定时删除：设置 key 的过期时间，当时间到达时，由事件处理器自动执行 key 的删除操作。</p>
 <p>​	惰性删除：只会在取出 key 的时候才对数据进行过期检查。这样对 CPU 最友好，但是可能会造成太多过期 key 没有被删除。</p>
 <p>​	定期删除：定时抽取一批key执行删除过期key操作。对CPU的影响校大。</p>
-<p>​	noeviction:返回错误当内存限制达到并且客户端尝试执行会让更多内存被使用的命令（大部分的写入指令，但DEL和几个例外）</p>
-<p>​	allkeys-lru: 尝试回收最少使用的键（LRU），使得新添加的数据有空间存放。</p>
-<p>​	volatile-lru: 尝试回收最少使用的键（LRU），但仅限于在过期集合的键,使得新添加的数据有空间存放。</p>
-<p>​	allkeys-random: 回收随机的键使得新添加的数据有空间存放。</p>
-<p>​	volatile-random: 回收随机的键使得新添加的数据有空间存放，但仅限于在过期集合的键。</p>
-<p>​	volatile-ttl: 回收在过期集合的键，并且优先回收存活时间（TTL）较短的键,使得新添加的数据有空间存放。</p>
+<p><strong>Redis 选择「惰性删除+定期删除」这两种策略配和使用</strong>，以求在合理使用 CPU 时间和避免内存浪费之间取得平衡。</p>
 <h3 id="Redis-内存淘汰策略"><a href="#Redis-内存淘汰策略" class="headerlink" title="Redis 内存淘汰策略"></a>Redis 内存淘汰策略</h3><p>19、Redis 的内存用完了会发生什么？ 内存中大量过期数据OOM怎么办？</p>
 <p>​	相关问题： MySQL  里有 2000w 数据，Redis 中只存 20w 的数据，如何保证 Redis 中的数据都是热点数据?</p>
-<p>​	Redis 内存淘汰机制：6+2种内存淘汰策略</p>
-<h2 id="高可用篇"><a href="#高可用篇" class="headerlink" title="高可用篇"></a>高可用篇</h2><h3 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h3><p>Redis 提供了<strong>主从复制模式</strong>，服务器之间的数据如何保持一致性。且主从服务器之间采用的是「读写分离」的方式。主服务器可以进行读写操作，当发生写操作时自动将写操作同步给从服务器，而从服务器一般是只读，并接受主服务器同步过来写操作命令，然后执行这条命令。</p>
-<h3 id="为什么要有哨兵？"><a href="#为什么要有哨兵？" class="headerlink" title="为什么要有哨兵？"></a>为什么要有哨兵？</h3><h3 id="为什么要有集群？"><a href="#为什么要有集群？" class="headerlink" title="为什么要有集群？"></a>为什么要有集群？</h3><h2 id="缓存篇"><a href="#缓存篇" class="headerlink" title="缓存篇"></a>缓存篇</h2><h3 id="缓存雪崩、缓存击穿、缓存穿透及解决方案？"><a href="#缓存雪崩、缓存击穿、缓存穿透及解决方案？" class="headerlink" title="缓存雪崩、缓存击穿、缓存穿透及解决方案？"></a>缓存雪崩、缓存击穿、缓存穿透及解决方案？</h3><p>​	<strong>缓存穿透</strong>（穿过&#x2F;透过缓存）：请求从数据库<strong>查询一个数据库里没有的数据</strong>，故不写入缓存。这将导致每次查询这个不存在的数据都要到数据库查询，缓存失去了意义，就像被穿透了，导致数据库扛不住请求洪峰。</p>
+<p>当 Redis 的运行内存已经超过 Redis 设置的最大内存之后，则会使用内存淘汰策略删除符合条件的 key，以此来保障 Redis 高效的运行	</p>
+<p>Redis 内存淘汰策略共有八种，这八种策略大体分为「不进行数据淘汰」和「进行数据淘汰」两类策略。</p>
+<p><em>1、不进行数据淘汰的策略</em></p>
+<p>​	<strong>noeviction</strong>（Redis3.0之后，默认的内存淘汰策略） ：它表示当运行内存超过最大设置内存时，不淘汰任何数据，而是不再提供服务，直接返回错误。</p>
+<p><em>2、进行数据淘汰的策略</em></p>
+<p>​	针对「进行数据淘汰」这一类策略，又可以细分为「在设置了过期时间的数据中进行淘汰」和「在所有数据范围内进行淘汰」这两类策略。</p>
+<p>​	在设置了过期时间的数据中进行淘汰：</p>
+<ul>
+<li><strong>volatile-random</strong>：随机淘汰设置了过期时间的任意键值；</li>
+<li><strong>volatile-ttl</strong>：优先淘汰更早过期的键值。</li>
+<li><strong>volatile-lru</strong>（Redis3.0 之前，默认的内存淘汰策略）：淘汰所有设置了过期时间的键值中，最久未使用的键值；</li>
+<li><strong>volatile-lfu</strong>（Redis 4.0 后新增的内存淘汰策略）：淘汰所有设置了过期时间的键值中，最少使用的键值；</li>
+</ul>
+<p>​	在所有数据范围内进行淘汰：</p>
+<ul>
+<li><strong>allkeys-random</strong>：随机淘汰任意键值;</li>
+<li><strong>allkeys-lru</strong>：淘汰整个键值中最久未使用的键值；</li>
+<li><strong>allkeys-lfu</strong>（Redis 4.0 后新增的内存淘汰策略）：淘汰整个键值中最少使用的键值。</li>
+</ul>
+<h2 id="高可用篇"><a href="#高可用篇" class="headerlink" title="高可用篇"></a>高可用篇</h2><h3 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h3><p>​	Redis 提供了<strong>主从复制模式</strong>，主从服务器之间采用的是「读写分离」的方式。所有的数据修改只在主服务器上进行，然后将最新的数据同步给从服务器，这样就使得主从服务器的数据是一致的。</p>
+<p>​	同步原理：从服务器通过载入 RDB 快照，RDB 快照由主服务器异步生成， Redis 依然可以正常处理命令。但是，这期间的写操作命令并没有记录到刚刚生成的 RDB 文件中，这时主从服务器间的数据就不一致了。那么为了保证主从服务器的数据一致性。会将主服务器生成 RDB 文件期~从服务器加载 RDB 文件期间的写操作写入到 <strong>replication buffer 缓冲区里</strong>。</p>
+<p>​	所以在从服务器加载完 RDB 文件后，然后将 replication buffer 缓冲区里所记录的写操作命令发送给从服务器，然后「从服务器」重新执行这些操作，至此主从服务器的数据就一致了。</p>
+<h3 id="增量复制"><a href="#增量复制" class="headerlink" title="增量复制"></a>增量复制</h3><p>​	主从服务器依靠 TCP 长连接进行命令传播，当网络断开时，主从服务器会采用<strong>增量复制</strong>的方式继续同步，也就是只会把网络断开期间主服务器接收到的写操作命令，同步给从服务器。</p>
+<h3 id="为什么要有哨兵？"><a href="#为什么要有哨兵？" class="headerlink" title="为什么要有哨兵？"></a>为什么要有哨兵？</h3><p>​	<strong>哨兵（*Sentinel*）机制</strong>，它的作用是实现<strong>主从节点故障转移</strong>。它会监测主节点是否存活，如果发现主节点挂了，它就会选举一个从节点切换为主节点，并且把新主节点的相关信息通知给从节点和客户端。</p>
+<h3 id="为什么要有集群？"><a href="#为什么要有集群？" class="headerlink" title="为什么要有集群？"></a>为什么要有集群？</h3><ul>
+<li>主从复制是一主多从，只有主服务器是处理写操作的，所以写操作可能存在瓶颈。</li>
+<li>哨兵主观下线、投票选举客观下线、新节点上线都需要时间，即在主节点宕机之后新的节点上线之前，Redis 至少存在几十秒不可用状态，此时无法写操作。</li>
+</ul>
+<p>​	而<strong>集群主节点是可以随意增加</strong>的，不存在写瓶颈，完美解决了以上问题。</p>
+<h2 id="缓存篇"><a href="#缓存篇" class="headerlink" title="缓存篇"></a>缓存篇</h2><h3 id="缓存雪崩、缓存击穿、缓存穿透及解决方案？"><a href="#缓存雪崩、缓存击穿、缓存穿透及解决方案？" class="headerlink" title="缓存雪崩、缓存击穿、缓存穿透及解决方案？"></a>缓存雪崩、缓存击穿、缓存穿透及解决方案？</h3><p>​	<strong>缓存穿透</strong>（穿过&#x2F;透过缓存）：请求从数据库<strong>查询一个数据库里没有的数据</strong>，故不写入缓存。这将导致每次查询这个不存在的数据都要到数据库查询，缓存失去了意义，就像被穿透了，导致数据库扛不住请求洪峰。</p>
 <p>​	应对缓存穿透的方案，常见的方案有三种。</p>
 <ul>
 <li>第一种方案，非法请求的限制；</li>
@@ -319,10 +349,20 @@
 <p><img src="/../imags/86b0046c2622b2c4bda697f9bc0f5b28.png" alt="图片"></p>
 <p>​	在数据库写入数据 x 后，把数据 x 标记在布隆过滤器时，数据 x 会被 3 个哈希函数分别计算出 3 个哈希值，然后在对这 3 个哈希值对 8 取模，假设取模的结果为 1、4、6，然后把位图数组的第 1、4、6 位置的值设置为 1。<strong>当应用要查询数据 x 是否数据库时，通过布隆过滤器只要查到位图数组的第 1、4、6 位置的值是否全为 1，只要有一个为 0，就认为数据 x 不在数据库中</strong>。	</p>
 <p>​	优点：空间和时间效率都比一般算法好很多。缺点：存在一定的识别率问题和删除困难。</p>
-<h3 id="数据库与缓存怎么保持数据一致性？"><a href="#数据库与缓存怎么保持数据一致性？" class="headerlink" title="数据库与缓存怎么保持数据一致性？"></a>数据库与缓存怎么保持数据一致性？</h3><p>​	数据不一致问题：数据库的数据是第二次更新操作的数据，而缓存确还是第一次更新操作的数据，所以显示的是第一次更新的数据，也就是<strong>出现了数据库和缓存的数据不一致的问题</strong>。</p>
-<p>​	</p>
+<h3 id="数据库与缓存怎么保持数据一致性？"><a href="#数据库与缓存怎么保持数据一致性？" class="headerlink" title="数据库与缓存怎么保持数据一致性？"></a>数据库与缓存怎么保持数据一致性？</h3><p>​	无论是「先更新数据库，再更新缓存」，还是「先更新缓存，再更新数据库」，这两个方案都存在并发问题，当两个请求并发更新同一条数据的时候，可能会出现缓存和数据库中的数据不一致的现象。</p>
+<p>​	旁路缓存策略：在更新数据时，<strong>不更新缓存，而是删除缓存中的数据。然后，到读取数据时，发现缓存中没了数据之后，再从数据库中读取数据，更新到缓存中。</strong></p>
+<p><strong>写策略的步骤：</strong></p>
+<ul>
+<li>更新数据库中的数据；</li>
+<li>删除缓存中的数据。</li>
+</ul>
+<p><strong>读策略的步骤：</strong></p>
+<ul>
+<li>如果读取的数据命中了缓存，则直接返回数据；</li>
+<li>如果读取的数据没有命中缓存，则从数据库中读取数据，然后将数据写入到缓存，并且返回给用户。</li>
+</ul>
 <h2 id="其他篇"><a href="#其他篇" class="headerlink" title="其他篇"></a>其他篇</h2><p>4、什么是 Redis? </p>
-<p>​	Redis是非关系型数据库，是存在于内存中的，所以他的读写速度较快，常被用于缓存方向，也可以用来做分布式锁，消息队列；并且Redis支持事务、持久化、Lua脚本、集群</p>
+<p>​	Redis是非关系型数据库，数据是存在于内存中的，所以他的读写速度较快，常被用于缓存方向，也可以用来做分布式锁，消息队列；并且Redis支持事务、持久化、Lua 脚本、集群</p>
 <p>1、Redis 是单线程的，如何提高多核 CPU 的利用率？ </p>
 <p>​	解决方法：可以在同一个服务器部署多个Redis的实例，并把他们当作不同的服务器来使用</p>
 <p>​	事实上Redis6.0引入多线程的主要原因之一就是可以充分利用服务器 CPU 资源，目前主线程只能利用一个核</p>
@@ -337,8 +377,7 @@
 <p>9、Redis线程模型、单线程快的原因 </p>
 <p>​	Redis 通过 IO 多路复用程序 来监听多个Scoket，I&#x2F;O 多路复用技术的使用让 Redis 不需要额外创建多余的线程来监听客户端的大量连接，降低了资源的消耗</p>
 <p>12、Redis 集群会有写操作丢失吗？为什么？ </p>
-<p>13、<a href="">redis</a> 主从复制的核心原理 </p>
-<p>14、<a href="">redis</a>集群方案 </p>
+<p>14、<a href="">redis</a> 集群方案 </p>
 <p>15、Redis 的同步机制了解么？ </p>
 <p>17、修改配置不重启 Redis 会实时生效吗？ </p>
 <p>18、如何实现集群中的 session 共享存储？ </p>
@@ -350,6 +389,58 @@
 <p>​		因为 Redis 使用 IO 多路复用。I&#x2F;O 多路复用技术的使用让 Redis 不需要额外创建多余的线程来监听客户端的大量连接，降低了资源的消耗（和 NIO 中的 <code>Selector</code> 组件很像）</p>
 <p>12、TQS 和 TPS，你的项目中发 QPS（Query Per Second）是多少？</p>
 <p>​		一般像  MySQL  这类的数据库的 QPS 大概都在 1w 左右（4 核 8g） ，但是使用 Redis 缓存之后很容易达到 10w+，甚至最高能达到 30w+（就单机 redis 的情况，redis 集群的话会更高）。自己项目的话：</p>
+<p>怎么判断 redis 某个节点是否正常工作？</p>
+<p>redis 判断接点是否正常工作，基本都是通过互相的 ping-pong 心态检测机制，如果有一半以上的节点去 ping 一个节点的时候没有 pong 回应，集群就会认为这个节点挂掉了，会断开与这个节点的连接。</p>
+<p>redis 主从节点发送的心态间隔是不一样的，而且作用也有一点区别：</p>
+<ul>
+<li>redis 主节点默认每隔 10 秒对从节点发送 ping 命令，判断从节点的存活性和连接状态，可通过参数repl-ping-slave-period控制发送频率。</li>
+<li>redis 从节点每隔 1 秒发送 replconf ack{offset} 命令，给主节点上报自身当前的复制偏移量，目的是为了：<ul>
+<li>实时监测主从节点网络状态；</li>
+<li>上报自身复制偏移量， 检查复制数据是否丢失， 如果从节点数据丢失， 再从主节点的复制缓冲区中拉取丢失数据。</li>
+</ul>
+</li>
+</ul>
+<p>主从复制架构中，过期key如何处理？</p>
+<p>主节点处理了一个key或者通过淘汰算法淘汰了一个key，这个时间主节点模拟一条del命令发送给从节点，从节点收到该命令后，就进行删除key的操作。</p>
+<p>redis 是同步复制还是异步复制？</p>
+<p>redis 主节点每次收到写命令之后，先写到内部的缓冲区，然后异步发送给从节点。</p>
+<p>主从复制中两个 Buffer(replication buffer 、repl backlog buffer)有什么区别？</p>
+<p>replication buffer 、repl backlog buffer 区别如下：</p>
+<ul>
+<li>replication buffer 是在全量复制阶段会出现，<strong>主库会给每个新连接的从库，分配一个</strong> replication buffer；repl backlog buffer 是在增量复制阶段出现，<strong>一个主库只分配一个</strong>repl backlog buffer；</li>
+<li>这两个 Buffer 都有大小限制的，当缓冲区满了之后。repl backlog buffer，因为是环形结构，会直接<strong>覆盖起始位置数据</strong>，replication buffer则会导致连接断开，删除缓存，从库重新连接，<strong>重新开始全量复制</strong>。</li>
+</ul>
+<p>redis 主从切换如何减少数据丢失？</p>
+<p>异步复制同步丢失</p>
+<p>对于 redis 主节点与从节点之间的数据复制，时异步复制的，当客户端发送写请求给主节点的时候，客户端会返回 ok，接着主节点将写请求异步同步给各个从节点，但是如果此时主节点还没来得及同步给从节点时发生了断电，那么主节点内存中的数据会丢失。</p>
+<p><strong>可以有 2 种解决方案：</strong></p>
+<ul>
+<li>第一种：客户端将数据暂时写入本地缓存和磁盘中，在一段时间后将本地缓存或者磁盘的数据发送给主节点，来保证数据不丢失；</li>
+<li>第二种：客户端将数据写入到消息队列中，发送一个延时消费消息，比如10分钟后再消费消息队列中的数据，然后再写到主节点。</li>
+</ul>
+<p>集群产生脑裂数据丢失</p>
+<p>先来理解集群的脑裂现象，这就好比一个人有两个大脑，那么到底受谁控制呢？</p>
+<p>那么在 redis 中，集群脑裂产生数据丢失的现象是怎样的呢？</p>
+<p>在 redis 主从架构中，部署方式一般是「一主多从」，主节点提供写操作，从节点提供读操作。</p>
+<p>如果主节点的网络突然发生了问题，它与所有的从节点都失联了，但是此时的主节点和客户端的网络是正常的，这个客户端并不知道 redis 内部已经出现了问题，还在照样的向这个失联的主节点写数据（过程A），此时这些数据被旧主节点缓存到了缓冲区里，因为主从节点之间的网络问题，这些数据都是无法同步给从节点的。</p>
+<p>这时，哨兵也发现主节点失联了，它就认为主节点挂了（但实际上主节点正常运行，只是网络出问题了），于是哨兵就会在从节点中选举出一个 leeder 作为主节点，这时集群就有两个主节点了 —— <strong>脑裂出现了</strong>。</p>
+<p>这时候网络突然好了，哨兵因为之前已经选举出一个新主节点了，它就会把旧主节点降级为从节点（A），然后从节点（A）会向新主节点请求数据同步，<strong>因为第一次同步是全量同步的方式，此时的从节点（A）会清空掉自己本地的数据，然后再做全量同步。所以，之前客户端在过程 A 写入的数据就会丢失了，也就是集群产生脑裂数据丢失的问题</strong>。</p>
+<p>总结一句话就是：由于网络问题，集群节点之间失去联系。主从数据不同步；重新平衡选举，产生两个主服务。等网络恢复，旧主节点会降级为从节点，再与新主节点进行同步复制的时候，由于会从节点会清空自己的缓冲区，所以导致之前客户端写入的数据丢失了。</p>
+<p><strong>解决方案：</strong></p>
+<p>当主节点发现从节点下线或者通信超时的总数量小于阈值时，那么禁止主节点进行写数据，直接把错误返回给客户端。</p>
+<p>在 redis 的配置文件中有两个参数我们可以设置：</p>
+<ul>
+<li>min-slaves-to-write x，主节点必须要有至少 x 个从节点连接，如果小于这个数，主节点会禁止写数据。</li>
+<li>min-slaves-max-lag x，主从数据复制和同步的延迟不能超过 x 秒，如果超过，主节点会禁止写数据。</li>
+</ul>
+<p>我们可以把 min-slaves-to-write 和 min-slaves-max-lag 这两个配置项搭配起来使用，分别给它们设置一定的阈值，假设为 N 和 T。</p>
+<p>这两个配置项组合后的要求是，主库连接的从库中至少有 N 个从库，和主库进行数据复制时的 ACK 消息延迟不能超过 T 秒，否则，主库就不会再接收客户端的写请求了。</p>
+<p>即使原主库是假故障，它在假故障期间也无法响应哨兵心跳，也不能和从库进行同步，自然也就无法和从库进行 ACK 确认了。这样一来，min-slaves-to-write 和 min-slaves-max-lag 的组合要求就无法得到满足，<strong>原主库就会被限制接收客户端写请求，客户端也就不能在原主库中写入新数据了</strong>。</p>
+<p><strong>等到新主库上线时，就只有新主库能接收和处理客户端请求，此时，新写的数据会被直接写到新主库中。而原主库会被哨兵降为从库，即使它的数据被清空了，也不会有新数据丢失。我再来给你举个例子。</strong></p>
+<p>假设我们将 min-slaves-to-write 设置为 1，把 min-slaves-max-lag 设置为 12s，把哨兵的 down-after-milliseconds 设置为 10s，主库因为某些原因卡住了 15s，导致哨兵判断主库客观下线，开始进行主从切换。同时，因为原主库卡住了 15s，没有一个从库能和原主库在 12s 内进行数据复制，原主库也无法接收客户端请求了。这样一来，主从切换完成后，也只有新主库能接收请求，不会发生脑裂，也就不会发生数据丢失的问题了。</p>
+<p>redis 主从如何做到故障自动切换？</p>
+<p>主节点挂了 ，从节点是无法自动升级为主节点的，这个过程需要人工处理，在此期间 redis 无法对外提供写操作。</p>
+<p>此时，redis 哨兵机制就登场了，哨兵在发现主节点出现故障时，由哨兵自动完成故障发现和故障转移，并通知给应用方，从而实现高可用性。</p>
 
     </div>
 
@@ -448,7 +539,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E7%BC%93%E5%AD%98"><span class="nav-number">1.</span> <span class="nav-text">Redis缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="nav-number">1.1.</span> <span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.1.</span> <span class="nav-text">Redis 常见数据类型和应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.2.</span> <span class="nav-text">Redis 数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZSet-%E3%80%81Set-%E5%92%8C-Java-Set-%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">1.1.3.</span> <span class="nav-text">ZSet 、Set 和 Java Set 区别？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E7%AF%87"><span class="nav-number">1.2.</span> <span class="nav-text">持久化篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF-%E6%97%A5%E5%BF%97-%E6%8C%81%E4%B9%85%E5%8C%96%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">1.2.1.</span> <span class="nav-text">AOF 日志 持久化怎么实现的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB-%E5%BF%AB%E7%85%A7-%E6%8C%81%E4%B9%85%E5%8C%96%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">1.2.2.</span> <span class="nav-text">RDB 快照 持久化怎么实现的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-4-0-%E7%9A%84%E6%B7%B7%E5%90%88%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">1.2.3.</span> <span class="nav-text">Redis 4.0 的混合持久化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E7%AF%87"><span class="nav-number">1.3.</span> <span class="nav-text">功能篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5"><span class="nav-number">1.3.1.</span> <span class="nav-text">Redis 过期删除策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-%E5%86%85%E5%AD%98%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5"><span class="nav-number">1.3.2.</span> <span class="nav-text">Redis 内存淘汰策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E5%8F%AF%E7%94%A8%E7%AF%87"><span class="nav-number">1.4.</span> <span class="nav-text">高可用篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="nav-number">1.4.1.</span> <span class="nav-text">主从复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E5%93%A8%E5%85%B5%EF%BC%9F"><span class="nav-number">1.4.2.</span> <span class="nav-text">为什么要有哨兵？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E9%9B%86%E7%BE%A4%EF%BC%9F"><span class="nav-number">1.4.3.</span> <span class="nav-text">为什么要有集群？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E7%AF%87"><span class="nav-number">1.5.</span> <span class="nav-text">缓存篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%E3%80%81%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF%E3%80%81%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9F"><span class="nav-number">1.5.1.</span> <span class="nav-text">缓存雪崩、缓存击穿、缓存穿透及解决方案？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">1.5.2.</span> <span class="nav-text">缓存穿透解决方案之一：布隆过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8E%E7%BC%93%E5%AD%98%E6%80%8E%E4%B9%88%E4%BF%9D%E6%8C%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%9F"><span class="nav-number">1.5.3.</span> <span class="nav-text">数据库与缓存怎么保持数据一致性？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%AF%87"><span class="nav-number">1.6.</span> <span class="nav-text">其他篇</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E7%BC%93%E5%AD%98"><span class="nav-number">1.</span> <span class="nav-text">Redis缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="nav-number">1.1.</span> <span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.1.</span> <span class="nav-text">Redis 常见数据类型和应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.2.</span> <span class="nav-text">Redis 数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZSet-%E3%80%81Set-%E5%92%8C-Java-Set-%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">1.1.3.</span> <span class="nav-text">ZSet 、Set 和 Java Set 区别？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E7%AF%87"><span class="nav-number">1.2.</span> <span class="nav-text">持久化篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF-%E6%97%A5%E5%BF%97-%E6%8C%81%E4%B9%85%E5%8C%96%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">1.2.1.</span> <span class="nav-text">AOF 日志 持久化怎么实现的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB-%E5%BF%AB%E7%85%A7-%E6%8C%81%E4%B9%85%E5%8C%96%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">1.2.2.</span> <span class="nav-text">RDB 快照 持久化怎么实现的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-4-0-%E7%9A%84%E6%B7%B7%E5%90%88%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">1.2.3.</span> <span class="nav-text">Redis 4.0 的混合持久化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E7%AF%87"><span class="nav-number">1.3.</span> <span class="nav-text">功能篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5"><span class="nav-number">1.3.1.</span> <span class="nav-text">Redis 过期删除策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-%E5%86%85%E5%AD%98%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5"><span class="nav-number">1.3.2.</span> <span class="nav-text">Redis 内存淘汰策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E5%8F%AF%E7%94%A8%E7%AF%87"><span class="nav-number">1.4.</span> <span class="nav-text">高可用篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="nav-number">1.4.1.</span> <span class="nav-text">主从复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E5%A4%8D%E5%88%B6"><span class="nav-number">1.4.2.</span> <span class="nav-text">增量复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E5%93%A8%E5%85%B5%EF%BC%9F"><span class="nav-number">1.4.3.</span> <span class="nav-text">为什么要有哨兵？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E9%9B%86%E7%BE%A4%EF%BC%9F"><span class="nav-number">1.4.4.</span> <span class="nav-text">为什么要有集群？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E7%AF%87"><span class="nav-number">1.5.</span> <span class="nav-text">缓存篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%E3%80%81%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF%E3%80%81%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9F"><span class="nav-number">1.5.1.</span> <span class="nav-text">缓存雪崩、缓存击穿、缓存穿透及解决方案？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">1.5.2.</span> <span class="nav-text">缓存穿透解决方案之一：布隆过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8E%E7%BC%93%E5%AD%98%E6%80%8E%E4%B9%88%E4%BF%9D%E6%8C%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%9F"><span class="nav-number">1.5.3.</span> <span class="nav-text">数据库与缓存怎么保持数据一致性？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%AF%87"><span class="nav-number">1.6.</span> <span class="nav-text">其他篇</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -534,12 +625,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">101k</span>
+    <span title="站点总字数">105k</span>
     
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:32</span>
+    <span title="站点阅读时长">1:35</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>

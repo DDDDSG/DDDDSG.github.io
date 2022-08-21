@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="​		测试学历总结，完善中 ing…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试学习总结">
+<meta property="og:url" content="http://example.com/2022/08/22/%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="U Boy TT">
+<meta property="og:description" content="​		测试学历总结，完善中 ing…">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/imags/image-20220817145014789.png">
+<meta property="og:image" content="http://example.com/imags/image-20220818142105706.png">
+<meta property="og:image" content="http://example.com/imags/image-20220818142034810.png">
+<meta property="og:image" content="http://example.com/imags/image-20220821150427193.png">
+<meta property="og:image" content="http://example.com/imags/image-20220817163044027.png">
+<meta property="article:published_time" content="2022-08-21T18:00:42.286Z">
+<meta property="article:modified_time" content="2022-08-21T18:04:06.745Z">
+<meta property="article:author" content="TT">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="JMeter">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/imags/image-20220817145014789.png">
+
+<link rel="canonical" href="http://example.com/2022/08/22/%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>测试学习总结 | U Boy TT</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">U Boy TT</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="fa fa-download fa-fw"></i>资源</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="TT">
+      <meta itemprop="description" content="All troubles are self-inflicted.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="U Boy TT">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          测试学习总结
+        </h1>
+
+        <div class="post-meta">
+
+	
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-08-22 02:00:42 / 修改时间：02:04:06" itemprop="dateCreated datePublished" datetime="2022-08-22T02:00:42+08:00">2022-08-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">学习总结</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>​		测试学历总结，完善中 ing…<span id="more"></span></p>
+<h1 id="学历路线"><a href="#学历路线" class="headerlink" title="学历路线"></a>学历路线</h1><p>软件测试理论</p>
+<p>用例设计：用例编号、用例标题、项目\模块、优先级、前置条件、测试步骤、测试数据、预期结果</p>
+<p>软件开发生命周期</p>
+<p>测试六大流程：需求分析、测试计划、用例编写、用例执行、缺陷管理、测试总结。</p>
+<p>功能、接口、性能、自动测试</p>
+<h1 id="第一章-基本概念"><a href="#第一章-基本概念" class="headerlink" title="第一章 基本概念"></a>第一章 基本概念</h1><h3 id="测试主流技能"><a href="#测试主流技能" class="headerlink" title="测试主流技能"></a>测试主流技能</h3><p>​	功能测试：比如登录功能手动测试，保证功能正确实现</p>
+<p>​	接口测试：代码和工具对服务端提供的接口进行测试</p>
+<p>​	性能测试：代码和工具，模拟多人使用，查找服务器缺陷</p>
+<p>​	自动化测试：代码和工具代替手工，对项目进行测试，生成报告</p>
+<h3 id="常见的测试分类"><a href="#常见的测试分类" class="headerlink" title="常见的测试分类"></a>常见的测试分类</h3><p>​	黑盒测试：源代码不可见，只能见到 UI 功能可见</p>
+<p>​	灰盒测试：部分源代码可见，UI 功能可见</p>
+<p>​	白盒测试：全部源代码可见，只能见到 UI 功能可见</p>
+<h3 id="软件测试流程"><a href="#软件测试流程" class="headerlink" title="软件测试流程"></a>软件测试流程</h3><p>​	1、需求分析；2、测试计划；3、用例设计；4、用例执行；5、缺陷管理；6、测试报告</p>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><p>测试用例：为测试项目而设计的<strong>执行文档</strong></p>
+<p>​	作用：防止漏测；实施测试的标准</p>
+<p>用例设计编写格式 8 大要素：用例编号、用例标题、项目\模块、优先级、前置条件、测试步骤、测试数据、预期结果</p>
+<p>​	用例编号：项目_模块_编号；</p>
+<p>​	用例标题：预期结果（测试点）；</p>
+<p>​	模块&#x2F;项目：所属模块或项目；</p>
+<p>​	优先级：P0~P4，P0重要程度最高</p>
+<p>​	前置条件：执行用例的前置操作</p>
+<p>​	测试步骤：描述操作步骤</p>
+<p>​	测试数据：被操作的数据</p>
+<p>​	预期结果：期望达到的结果</p>
+<p>​	实际结果：执行用例填写实际结果</p>
+<p>QQ 测试登录功能的<strong>测试用例</strong>（执行测试的文档）案例演示：</p>
+<table>
+<thead>
+<tr>
+<th>用例编号</th>
+<th>用例标题</th>
+<th>模块&#x2F;项目</th>
+<th>优先级</th>
+<th>前置条件</th>
+<th>测试步骤</th>
+<th>测试数据</th>
+<th align="center">预期结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>QQ_login_001</td>
+<td>登录失败（账号为空）</td>
+<td>登录</td>
+<td>p1</td>
+<td>1、打开登录页面；2、网络正常</td>
+<td>1、输入账号；2、输入密码；3、点击登录；</td>
+<td>1、账号为空；2、密码为123456</td>
+<td align="center">登录失败，提示：账号不能为空</td>
+</tr>
+<tr>
+<td>QQ_login_002</td>
+<td>登录失败（账号未注册）</td>
+<td>登录</td>
+<td>p1</td>
+<td>1、打开登录页面；2、网络正常；3、账号未注册</td>
+<td>1、输入账号；2、输入密码；3、点击登录；</td>
+<td>1、未注册账号；2、密码为123456</td>
+<td align="center">登录失败，提示：账号不存在</td>
+</tr>
+<tr>
+<td>QQ_login_003</td>
+<td>登录失败（密码为空）</td>
+<td>登录</td>
+<td>p1</td>
+<td>1、打开登录页面；2、网络正常；3、账号已注册</td>
+<td>1、输入账号；2、输入密码；3、点击登录；</td>
+<td>1、已注册账号；2、密码为空</td>
+<td align="center">登录失败，提示：密码不可为空</td>
+</tr>
+<tr>
+<td>QQ_login_004</td>
+<td>登录失败（密码错误）</td>
+<td>登录</td>
+<td>p1</td>
+<td>1、打开登录页面；2、网络正常；3、账号已注册</td>
+<td>1、输入账号；2、输入密码；3、点击登录；</td>
+<td>1、已注册账号；2、密码错误</td>
+<td align="center">登录失败，提示：密码错误</td>
+</tr>
+</tbody></table>
+<h1 id="第二章-测试设计"><a href="#第二章-测试设计" class="headerlink" title="第二章 测试设计"></a>第二章 测试设计</h1><p>测试六大流程：需求分析、测试计划、用例编写、用例执行、缺陷管理、测试总结。</p>
+<p>如何设计测试点</p>
+<h3 id="等价类划分"><a href="#等价类划分" class="headerlink" title="等价类划分"></a>等价类划分</h3><p><strong>等价类划分</strong>：具有某种共同特征的数据集进行划分，可以划分为有效等价类和无效等价类。</p>
+<p>​	解决：能对穷举场景设计测试点</p>
+<p>​	步骤流程：1、明确需求；2、确定有效无效边界；3、提取数据编写测试用例</p>
+<p>验证 QQ 账号的合法性（6~10位自然数） 案例：</p>
+<table>
+<thead>
+<tr>
+<th>用例编号</th>
+<th>用例标题</th>
+<th>项目&#x2F;模块</th>
+<th>优先级</th>
+<th>前置条件</th>
+<th>测试步骤</th>
+<th>测试数据</th>
+<th>测试结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>qq_001</td>
+<td>qq合法（8位自然数）</td>
+<td>qq</td>
+<td>p0</td>
+<td>打开qq程序</td>
+<td>1、输入qq号；2、点击验证按钮</td>
+<td>12345678</td>
+<td>合法</td>
+</tr>
+<tr>
+<td>qq_002</td>
+<td>qq不合法（5位自然数）</td>
+<td>qq</td>
+<td>p1</td>
+<td>打开qq程序</td>
+<td>1、输入qq号；2、点击验证按钮</td>
+<td>12345</td>
+<td>不合法</td>
+</tr>
+<tr>
+<td>qq_003</td>
+<td>qq不合法（11位自然数）</td>
+<td>qq</td>
+<td>p1</td>
+<td>打开qq程序</td>
+<td>1、输入qq号；2、点击验证按钮</td>
+<td>12345678910</td>
+<td>不合法</td>
+</tr>
+<tr>
+<td>qq_004</td>
+<td>qq不合法（6位非自然数）</td>
+<td>qq</td>
+<td>p1</td>
+<td>打开qq程序</td>
+<td>1、输入qq号；2、点击验证按钮</td>
+<td>123456a</td>
+<td>不合法</td>
+</tr>
+</tbody></table>
+<h3 id="边界值分析法"><a href="#边界值分析法" class="headerlink" title="边界值分析法"></a>边界值分析法</h3><p><strong>边界值分析法</strong>：能对限定边界规则设计测试点（&gt;&#x3D;，&gt;，&lt;，&lt;&#x3D;）</p>
+<p>​	上点：边界上的点</p>
+<p>​	内点：范围内的点</p>
+<p>​	离点：离边界最近的点</p>
+<p>​	步骤流程：1、明确需求；2、划分等级啊；3、确定边界；4、编写用例</p>
+<h3 id="判定表法"><a href="#判定表法" class="headerlink" title="判定表法"></a>判定表法</h3><p><strong>判定表法</strong>：能对多条件依赖关系进行设计测试点</p>
+<p>​	等价类划分，主要关注单个输入类条件测试。判定表法，考虑多个条件之间的组合。</p>
+<p>​	案例：<img src="/../imags/image-20220817145014789.png" alt="image-20220817145014789"></p>
+<p>​	步骤流程：1、明确需求；2、画判定表；3、编写用例</p>
+<h3 id="场景法"><a href="#场景法" class="headerlink" title="场景法"></a>场景法</h3><p><strong>场景法</strong>：又称流程图法，能对项目业务进行设计测试点</p>
+<h1 id="第三章-缺陷管理"><a href="#第三章-缺陷管理" class="headerlink" title="第三章 缺陷管理"></a>第三章 缺陷管理</h1><h2 id="了解-it-行业常见岗位"><a href="#了解-it-行业常见岗位" class="headerlink" title="了解 it 行业常见岗位"></a>了解 it 行业常见岗位</h2><p>​	前端&#x2F;后端&#x2F;测试&#x2F;ui&#x2F;运维&#x2F;产品&#x2F;运营</p>
+<h2 id="缺陷判定标准"><a href="#缺陷判定标准" class="headerlink" title="缺陷判定标准"></a>缺陷判定标准</h2><p>​	少功能、多功能、功能错误、隐形功能错误、不易使用</p>
+<p>​	BUG 类型：功能错误、界面错误、兼容性、数据、易用性、架构等</p>
+<h2 id="缺陷管理流程"><a href="#缺陷管理流程" class="headerlink" title="缺陷管理流程"></a>缺陷管理流程</h2><p>​	测试流程：需求分析、测试计划、用例设计、用例执行、<strong>缺陷管理</strong>、测试报告</p>
+<p>​	<strong>BUG 的管理流程</strong>：提交缺陷、分派缺陷、处理缺陷、回归测试、关闭缺陷</p>
+<p>​	缺陷报告：缺陷 ID、缺陷标题、缺陷状态、严重程度、优先级、所属模块、缺陷描述、附件</p>
+<h2 id="使用工具对-BUG-进行管理"><a href="#使用工具对-BUG-进行管理" class="headerlink" title="使用工具对 BUG 进行管理"></a>使用工具对 BUG 进行管理</h2><h3 id="使用-excel-管理缺陷"><a href="#使用-excel-管理缺陷" class="headerlink" title="使用 excel 管理缺陷"></a>使用 excel 管理缺陷</h3><p>​	缺陷标题：测试数据结果描述（问题） + 实际结果 + 预期或需求</p>
+<p>​	状态：新建、打开、关闭、拒绝、延期</p>
+<p>​	缺陷描述：前置、步骤、预期、实际</p>
+<p><strong>缺陷报告</strong>示例：</p>
+<table>
+<thead>
+<tr>
+<th>缺陷 ID</th>
+<th>缺陷标题</th>
+<th>缺陷状态</th>
+<th>严重程度</th>
+<th>优先级</th>
+<th>所属模块</th>
+<th>缺陷描述</th>
+<th>附件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bug101</td>
+<td>正常下单支付后，支付失败</td>
+<td>new</td>
+<td>P0</td>
+<td>P0</td>
+<td>Ego核心模块</td>
+<td>1、打开小程序<br />2、选中商品添加购物车进行下单<br />3、订单详情点击支付<br />预期结果：能够唤起微信支付<br />实际结果：无相应</td>
+<td>图</td>
+</tr>
+</tbody></table>
+<h3 id="使用禅道管理缺陷"><a href="#使用禅道管理缺陷" class="headerlink" title="使用禅道管理缺陷"></a>使用禅道管理缺陷</h3><p>禅道：缺陷管理和用例管理</p>
+<p><img src="/../imags/image-20220818142105706.png" alt="image-20220818142105706"></p>
+<p><img src="/../imags/image-20220818142034810.png" alt="image-20220818142034810"></p>
+<h2 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h2><p>​	抓客户端向服务端请求和服务端向客户端相应的数据包</p>
+<h1 id="第四章-项目实战"><a href="#第四章-项目实战" class="headerlink" title="第四章 项目实战"></a>第四章 项目实战</h1><p>​	项目功能测试</p>
+<h2 id="Web-登录功能测试"><a href="#Web-登录功能测试" class="headerlink" title="Web 登录功能测试"></a>Web 登录功能测试</h2><h3 id="登录需求分析-1"><a href="#登录需求分析-1" class="headerlink" title="登录需求分析-1"></a>登录需求分析-1</h3><p>1、输入正确的中国手机号(11位)<br>    当文本框失去焦点的时候验证，红色为失败，绿色为成功<br>2、点击发送验证码<br>    如果手机号文本框状态为绿色，弹出”点击按钮进行验证”；<br>    如果手机号文本框为红色，提示手机号不正确<br>3、点击按钮进行验证<br>    拖拽图形到指定位置，按钮消失；<br>    拖拽图形未到指定位置，晃动提醒，滑块回到初始位置；																								      	超过5次，提示尝试过多，请点击重试；</p>
+<h3 id="登录需求分析-2"><a href="#登录需求分析-2" class="headerlink" title="登录需求分析-2"></a>登录需求分析-2</h3><p>1、输入验证码<br>    正确的验证码，并“勾选我已阅读并同意”，点击登录，进入系统;<br>    错误的验证码，并“勾选我已阅读并同意”，点击登录，提示验证码错误:<br>    正确的验证码，未“勾选我已阅读并同意”，点击登录，提示请勾选;</p>
+<p>2、点击登录<br>    手机号、验证码都为绿色，勾选“我已阅读并同意”，登录成功</p>
+<h3 id="登录测试点提取"><a href="#登录测试点提取" class="headerlink" title="登录测试点提取"></a>登录测试点提取</h3><p>测试点分析：正向尽量覆盖多条；逆向一次覆盖一条，其他必须正确</p>
+<p><strong>登录模块</strong>：手机号、点击验证按钮、输入验证码、勾选协议</p>
+<p>​		手机号：正向–11位正确手机号；逆向–为空\10位纯数字\12位纯数字\11位非数字\未注册（格式正确）</p>
+<p>​		点击验证按钮：正向–发送成功；逆向–发送失败</p>
+<p>​		输入验证码：正向–正确；逆向–为空\错误\过期</p>
+<p>​		勾选协议：正向–勾选；逆向–未勾选</p>
+<p>​		UI 原型：1、布局、颜色与原型一致；2、图片文字准确无误</p>
+<p>​		兼容性：火狐、谷歌、IE&#x2F;Edge、苹果</p>
+<p><strong>验证码获取功能</strong>：正向–发送成功；逆向–发送失败（未到位置）&#x2F;发送失败（重试）</p>
+<table>
+<thead>
+<tr>
+<th>用例编号</th>
+<th>用例标题</th>
+<th>项目&#x2F;模块</th>
+<th>优先级</th>
+<th>前置条件</th>
+<th>测试步骤</th>
+<th>测试数据</th>
+<th>预期结果</th>
+<th>实际结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>login_001</td>
+<td>登录成功</td>
+<td>登录</td>
+<td>P0</td>
+<td>1、账号注册成功<br />2、打开登录界面</td>
+<td>1、输入正确手机号<br />2、输入正确验证码<br />3、勾选协议<br />4、正确登录</td>
+<td>手机号：12345678910<br />验证码：123456</td>
+<td>登录成功跳转到个人主页<br />2、手机号窗口都标记为绿色</td>
+<td></td>
+</tr>
+<tr>
+<td>login_002</td>
+<td>登录失败（手机号为空）</td>
+<td>登录</td>
+<td>P1</td>
+<td>1、打开登录界面</td>
+<td>1、输入手机号为空<br />2、输入正确验证码<br />3、勾选协议<br />4、正确登录</td>
+<td>手机号：空<br />验证码：123456</td>
+<td>登录失败<br />1、手机号登录窗口都标记为红色，手机号不能为空</td>
+<td></td>
+</tr>
+<tr>
+<td>login_003</td>
+<td>登录失败（手机号为）</td>
+<td>登录</td>
+<td>P1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>login_004</td>
+<td>登录失败（手机号为）</td>
+<td>登录</td>
+<td>P1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>login_005</td>
+<td>登录失败（手机号为）</td>
+<td>登录</td>
+<td>P1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>login_006</td>
+<td>登录失败（手机号为）</td>
+<td>登录</td>
+<td>P1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>login_007</td>
+<td>登录失败（手机号为）</td>
+<td>登录</td>
+<td>P1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>login_008</td>
+<td>登录失败（手机号为）</td>
+<td>登录</td>
+<td>P1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>login_009</td>
+<td>登录失败（手机号为）</td>
+<td>登录</td>
+<td>P1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>login_0010</td>
+<td>登录失败（手机号为）</td>
+<td>登录</td>
+<td>P1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>login_0011</td>
+<td>登录失败（手机号为）</td>
+<td>登录</td>
+<td>P1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>login_0012</td>
+<td>登录失败（手机号为）</td>
+<td>登录</td>
+<td>P1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>login_0013</td>
+<td>登录失败（手机号为）</td>
+<td>登录</td>
+<td>P1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>login_0014</td>
+<td>登录失败（手机号为）</td>
+<td>登录</td>
+<td>P1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="Web-发布文章功能测试"><a href="#Web-发布文章功能测试" class="headerlink" title="Web 发布文章功能测试"></a>Web 发布文章功能测试</h2><h3 id="发布文章需求分析"><a href="#发布文章需求分析" class="headerlink" title="发布文章需求分析"></a>发布文章需求分析</h3><p>1.文章标题不能小于5个字符<br>2.文章内容不能为空<br>3.频道不能为空																																									 4.封面选择，单图、三图，无图、自动<br>5.点击选择图片<br>    素材库、上传图片切换素材库<br>    全部和收藏切换图片可以选择上传图片<br>    点击选择图片-选择本地文件<br>    点击开始上传-如果已经选择本地文件，点击上传，上传成功1点击开始上传-如果未选择本地文件，提示”请选择一张图片”<br>6.点击发表，提示新增文章成功，跳转到内容列表，文章状态显示待审核<br>7.点击存入草稿，提示新增文章成功，跳转到内容列表，文章状态显示草稿</p>
+<h3 id="发布文章测试点提取"><a href="#发布文章测试点提取" class="headerlink" title="发布文章测试点提取"></a>发布文章测试点提取</h3><p><strong>发布文章</strong>：UI 测试、标题、内容、封面、频道、发表、存入草稿</p>
+<p>​	UI 测试–1、布局、颜色是否与原图一致；2、图片文字是否正确</p>
+<p>​	标题–正向：标题为5个字符&#x2F;6个字符；逆向：标题为4个字符&#x2F;为空</p>
+<p>​	内容–正向：内容为1个字符；逆向：内容为空</p>
+<p>​	封面–正向： 单图&#x2F;三图&#x2F;无图&#x2F;自动；逆向：单图未选图&#x2F;三图未选图</p>
+<p>​	频道–正向：选一个；逆向：为空</p>
+<p>​	结果–发表；存入草稿箱</p>
+<p>​	独立–1、选择图片：；2、选择频道</p>
+<table>
+<thead>
+<tr>
+<th>用例编号</th>
+<th>用例标题</th>
+<th>项目&#x2F;模块</th>
+<th>优先级</th>
+<th>前置条件</th>
+<th>测试步骤</th>
+<th>测试数据</th>
+<th>预期结果</th>
+<th>实际结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>article_001</td>
+<td>发布文章成功（单图）</td>
+<td>发布文章</td>
+<td>P0</td>
+<td>1、登录成功<br />2、发布文章</td>
+<td>1、输入标题<br />2、输入内容<br />3、选择封面<br />4、选择频道<br />5、点击发布</td>
+<td>标题：哈哈111<br />内容：嘻<br />选择封面：单图<br />频道：IOS</td>
+<td>文章发布成功，跳转内容列表界面，提示发布文章成功</td>
+<td></td>
+</tr>
+<tr>
+<td>article_002</td>
+<td>发布文章成功（三图）</td>
+<td>发布文章</td>
+<td>P0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>article_003</td>
+<td>发布文章成功（无图）</td>
+<td>发布文章</td>
+<td>P0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>article_004</td>
+<td>发布文章成功（自动）</td>
+<td>发布文章</td>
+<td>P0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>article_005</td>
+<td>发布文章失败（标题4个字符）</td>
+<td>发布文章</td>
+<td>P1</td>
+<td>1、登录成功<br />2、发布文章</td>
+<td>1、输入标题<br />2、输入内容<br />3、选择封面<br />4、选择频道<br />5、点击发布</td>
+<td>标题：1111<br />内容：嘻<br />选择封面：单图<br />频道：IOS</td>
+<td>文章发布失败，提示标题最少5个字符</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="完成两个功能的测试六大流程"><a href="#完成两个功能的测试六大流程" class="headerlink" title="完成两个功能的测试六大流程"></a>完成两个功能的测试六大流程</h2><p>​	测试六大流程：需求分析、测试计划、设计用例（1、设计测试点；2、编写用例覆盖测试点）、执行用例（填写实际结果）、缺陷管理（提交-&gt;开发修复-&gt;验证-&gt;关闭）、测试报告。</p>
+<h3 id="缺陷管理，工具（禅道，Excel，jira）："><a href="#缺陷管理，工具（禅道，Excel，jira）：" class="headerlink" title="缺陷管理，工具（禅道，Excel，jira）："></a>缺陷管理，工具（禅道，Excel，jira）：</h3><table>
+<thead>
+<tr>
+<th>缺陷编号</th>
+<th>缺陷标题</th>
+<th>模块</th>
+<th>严重级别</th>
+<th>复现步骤</th>
+<th>指定人员</th>
+<th>缺陷类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>测试点+实际结果+预期</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="/../imags/image-20220821150427193.png" alt="image-20220821150427193"></p>
+<h3 id="测试报告八大要素"><a href="#测试报告八大要素" class="headerlink" title="测试报告八大要素"></a>测试报告八大要素</h3><p>​	项目背景、测试目标、提测标准、结束标准、风险控制、bug统计、bug分析、测试总结</p>
+<p>​	项目背景：项目介绍</p>
+<p>​	测试目标：登录模块&#x2F;发布文章模块</p>
+<p>​	提测标准：冒烟测试用例100%通过；被测试内容符合约定版本及功能</p>
+<p>​	结束标准：P0~P2 全部修复完成；P3 修复95%</p>
+<p>​	风险控制：人员风险，测试环境风险，需要风险</p>
+<p>​	bug 统计：登录模块8个；发布文章1个（P0）</p>
+<p>​	bug分析：略</p>
+<p>​	测试总结：问题：登录需求不明确；选择频道不明；上传图片功能有点问题；收获：先设计主功能；其次设计独立功能点；在设计测试用例前先设计测试点</p>
+<h1 id="第五章-性能测试"><a href="#第五章-性能测试" class="headerlink" title="第五章 性能测试"></a>第五章 性能测试</h1><p>性能测试：基准测试、<strong>负载测试</strong>、<strong>稳定性测试</strong>、并发测试、压力测试</p>
+<p>性能测试指标：响应时间、并发数、吞吐量（单位时间处理客户端请求数量）、点击数（不是点击一次的数量）、错误率（负载下，失败的概率）、资源利用率（CPU、内存、磁盘 IO、网络等资源的利用情况）</p>
+<p>性能测试的流程：性能测试需求分析、性能测试计划和方案、性能用例设计、性能测试执行、性能分析和调优、性能报告总结</p>
+<p>性能测试用例：用例名称、用例编号、用例描述、前置条件、用例步骤和期望结果、实际结果（并发数、响应时间、吞吐量、成功率各个指标与事务、服务器数性能、据库性能）</p>
+<p>性能测试执行：建立测试环境、编写测试脚本、性能测试监控、执行测试脚本</p>
+<h2 id="JMeter-压力测试工具"><a href="#JMeter-压力测试工具" class="headerlink" title="JMeter 压力测试工具"></a>JMeter 压力测试工具</h2><p>使用工具模拟多个客户端访问服务器，查看性能。</p>
+<p><img src="/../imags/image-20220817163044027.png" alt="image-20220817163044027"></p>
+<p>1、创建线程组，用来模拟多个用户</p>
+<p>2、创建 HTTP 请求，用于访问某功能</p>
+<p>3、添加定时器，用于添加时间间隔否则服务器容易宕机</p>
+<p>4、聚合报告，主要看吞吐量（处理多少请求&#x2F;s）</p>
+<p>优化前 10 左右的吞吐量，优化后（对网站性能优化采用：本地缓存+分布式缓存方案）达到了 190 左右的吞吐量。</p>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>每次的测试步骤：初始化数据、执行测试代码、验证测试结果、清理测试数据</p>
+<p>​	</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>TT
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2022/08/22/%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" title="测试学习总结">http://example.com/2022/08/22/测试学习总结/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+              <a href="/tags/JMeter/" rel="tag"># JMeter</a>
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/16/Redis%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" rel="prev" title="Redis 知识点总结">
+      <i class="fa fa-chevron-left"></i> Redis 知识点总结
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E5%8E%86%E8%B7%AF%E7%BA%BF"><span class="nav-number">1.</span> <span class="nav-text">学历路线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">第一章 基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E4%B8%BB%E6%B5%81%E6%8A%80%E8%83%BD"><span class="nav-number">2.0.1.</span> <span class="nav-text">测试主流技能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB"><span class="nav-number">2.0.2.</span> <span class="nav-text">常见的测试分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B"><span class="nav-number">2.0.3.</span> <span class="nav-text">软件测试流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="nav-number">2.0.4.</span> <span class="nav-text">测试用例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%B5%8B%E8%AF%95%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">第二章 测试设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E4%BB%B7%E7%B1%BB%E5%88%92%E5%88%86"><span class="nav-number">3.0.1.</span> <span class="nav-text">等价类划分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E5%80%BC%E5%88%86%E6%9E%90%E6%B3%95"><span class="nav-number">3.0.2.</span> <span class="nav-text">边界值分析法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E5%AE%9A%E8%A1%A8%E6%B3%95"><span class="nav-number">3.0.3.</span> <span class="nav-text">判定表法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E6%B3%95"><span class="nav-number">3.0.4.</span> <span class="nav-text">场景法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%BC%BA%E9%99%B7%E7%AE%A1%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">第三章 缺陷管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%86%E8%A7%A3-it-%E8%A1%8C%E4%B8%9A%E5%B8%B8%E8%A7%81%E5%B2%97%E4%BD%8D"><span class="nav-number">4.1.</span> <span class="nav-text">了解 it 行业常见岗位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%BA%E9%99%B7%E5%88%A4%E5%AE%9A%E6%A0%87%E5%87%86"><span class="nav-number">4.2.</span> <span class="nav-text">缺陷判定标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%BA%E9%99%B7%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B"><span class="nav-number">4.3.</span> <span class="nav-text">缺陷管理流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7%E5%AF%B9-BUG-%E8%BF%9B%E8%A1%8C%E7%AE%A1%E7%90%86"><span class="nav-number">4.4.</span> <span class="nav-text">使用工具对 BUG 进行管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-excel-%E7%AE%A1%E7%90%86%E7%BC%BA%E9%99%B7"><span class="nav-number">4.4.1.</span> <span class="nav-text">使用 excel 管理缺陷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%A6%85%E9%81%93%E7%AE%A1%E7%90%86%E7%BC%BA%E9%99%B7"><span class="nav-number">4.4.2.</span> <span class="nav-text">使用禅道管理缺陷</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%93%E5%8C%85"><span class="nav-number">4.5.</span> <span class="nav-text">抓包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98"><span class="nav-number">5.</span> <span class="nav-text">第四章 项目实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="nav-number">5.1.</span> <span class="nav-text">Web 登录功能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-1"><span class="nav-number">5.1.1.</span> <span class="nav-text">登录需求分析-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-2"><span class="nav-number">5.1.2.</span> <span class="nav-text">登录需求分析-2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E6%B5%8B%E8%AF%95%E7%82%B9%E6%8F%90%E5%8F%96"><span class="nav-number">5.1.3.</span> <span class="nav-text">登录测试点提取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="nav-number">5.2.</span> <span class="nav-text">Web 发布文章功能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">5.2.1.</span> <span class="nav-text">发布文章需求分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0%E6%B5%8B%E8%AF%95%E7%82%B9%E6%8F%90%E5%8F%96"><span class="nav-number">5.2.2.</span> <span class="nav-text">发布文章测试点提取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%88%90%E4%B8%A4%E4%B8%AA%E5%8A%9F%E8%83%BD%E7%9A%84%E6%B5%8B%E8%AF%95%E5%85%AD%E5%A4%A7%E6%B5%81%E7%A8%8B"><span class="nav-number">5.3.</span> <span class="nav-text">完成两个功能的测试六大流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%BA%E9%99%B7%E7%AE%A1%E7%90%86%EF%BC%8C%E5%B7%A5%E5%85%B7%EF%BC%88%E7%A6%85%E9%81%93%EF%BC%8CExcel%EF%BC%8Cjira%EF%BC%89%EF%BC%9A"><span class="nav-number">5.3.1.</span> <span class="nav-text">缺陷管理，工具（禅道，Excel，jira）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E5%85%AB%E5%A4%A7%E8%A6%81%E7%B4%A0"><span class="nav-number">5.3.2.</span> <span class="nav-text">测试报告八大要素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="nav-number">6.</span> <span class="nav-text">第五章 性能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JMeter-%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">6.1.</span> <span class="nav-text">JMeter 压力测试工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="nav-number">6.2.</span> <span class="nav-text">单元测试</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TT"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">TT</p>
+  <div class="site-description" itemprop="description">All troubles are self-inflicted.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/DDDDSG" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;DDDDSG" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/62531488?spm_id_from=333.1007.0.0" title="bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;62531488?spm_id_from&#x3D;333.1007.0.0" rel="noopener" target="_blank"><i class="fa fa-bold fa-fw"></i>bilibili</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://javaguide.cn/" title="https:&#x2F;&#x2F;javaguide.cn&#x2F;" rel="noopener" target="_blank">JavaGuide</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.programmercarl.com/" title="https:&#x2F;&#x2F;www.programmercarl.com&#x2F;" rel="noopener" target="_blank">Leetcode-master</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TT</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">110k</span>
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:40</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
